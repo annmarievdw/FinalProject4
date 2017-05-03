@@ -39,7 +39,13 @@ namespace FinalProject4
 
         private void apptBtn_Click(object sender, RoutedEventArgs e)
         {
+            Appointment appointment = new Appointment();
 
+            appointment.ApptTime = apptDate.SelectedDate;
+            appointment.Subject = apptTextbox.Text;
+            appointment.Goal = apptCombobox.Text;
+
+            db.Appointments.InsertOnSubmit(appointment);
         }
 
         private void apptCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)

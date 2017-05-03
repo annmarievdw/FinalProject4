@@ -69,17 +69,20 @@ namespace FinalProject4
             //goals.Where(apptGoal => Goal)
             //     goals.Count++;
             count = 0;
+
             var apptSteps =
                 from ap in db.Appointments
                 where ap.Goal == chosenGoal
-                select ap.ID;
+                select new { ap.ID };
+
+                apptSteps.ToList();
 
             var todoSteps =
                 from td in db.ToDoLists
                 where td.Goal == chosenGoal
-                select td.ID;
+                select new { td.ID };
 
-                      
+                todoSteps.ToList();     
 
             //somehow select ap.goal + t.goal and total count
 
@@ -154,7 +157,7 @@ namespace FinalProject4
                 progressgoal.Goal = addGoalTextbox.Text;
 
                 db.ProgressGoals.InsertOnSubmit(progressgoal);
-                //db.SubmitChanges();
+                db.SubmitChanges();
 
                 goalListbox.Items.Add(this.addGoalTextbox.Text);
                
@@ -168,10 +171,10 @@ namespace FinalProject4
 
                 progressgoal.Goal = chosenGoal;
 
-                db.ProgressGoals.DeleteOnSubmit(progressgoal);
+                //db.ProgressGoals.DeleteOnSubmit(progressgoal);
                 //db.SubmitChanges();
 
-                goalListbox.Items.Remove(this.addGoalTextbox.Text);
+                //goalListbox.Items.Remove(this.addGoalTextbox.Text);
 
                 this.addGoalTextbox.Focus();
                 this.addGoalTextbox.Clear();

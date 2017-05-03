@@ -18,8 +18,9 @@
         </Grid.RowDefinitions>
         <Border Background="PaleGreen"/>
         <StackPanel Grid.Column="0">
-            <Calendar Background="Azure" Height="170" HorizontalAlignment="Center" Margin="41,0"
-              x:Name="calendar1" VerticalAlignment="Center" Width="180"   SelectionMode="SingleDate"/>
+            <!--<Calendar Background="Azure" Height="170" HorizontalAlignment="Center" Margin="41,0"
+              x:Name="calendar1" VerticalAlignment="Center" Width="180"   SelectionMode="SingleDate"/>-->
+            <Image Source="pack://siteoforigin:,,,/Sky.jpg"></Image>
             <ListBox Name="apptListbox" HorizontalContentAlignment="Left" SelectedItem="{Binding Subject}" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
@@ -33,11 +34,11 @@
         </StackPanel>
         <StackPanel Grid.Column="1">
             <Label Name="apptLbl" Background="LemonChiffon" Height="31">Appointments</Label>
-            <DatePicker Height="31"></DatePicker>
+            <DatePicker Name="apptDate" Height="31"></DatePicker>
             <Label Name="subjectLbl" Background="LemonChiffon" Height="31">Event</Label>
             <TextBox Name="apptTextbox" Text=" " Height="31"></TextBox>
             <Label Name="goalLbl" Background="LemonChiffon" Height="31">Choose a Goal</Label>
-            <ComboBox Name="apptCombobox" SelectionChanged="apptCombobox_SelectionChanged" ItemsSource="{Binding}"></ComboBox>
+            <ComboBox Name="apptCombobox" SelectionChanged="apptCombobox_SelectionChanged" ItemsSource="{Binding Goal}"></ComboBox>
             <Button Name="apptBtn" Height="31" Click="apptBtn_Click">Save</Button>
 
         </StackPanel>
