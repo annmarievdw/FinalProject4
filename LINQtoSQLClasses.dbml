@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="GoalsProject" Class="LINQtoSQLClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=AMY-PC;Initial Catalog=GoalsProject;Integrated Security=True" SettingsObjectName="FinalProject4.Properties.Settings" SettingsPropertyName="GoalsProjectConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Appointment" Member="Appointments">
+    <Type Name="Appointment">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Subject" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Goal" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ApptTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="ProgressGoal_Appointment" Member="ProgressGoal" ThisKey="Goal" OtherKey="Goal" Type="ProgressGoal" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProgressGoal" Member="ProgressGoals">
+    <Type Name="ProgressGoal">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Goal" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="ProgressGoal_Appointment" Member="Appointments" ThisKey="Goal" OtherKey="Goal" Type="Appointment" />
+      <Association Name="ProgressGoal_ToDoList" Member="ToDoLists" ThisKey="Goal" OtherKey="Goal" Type="ToDoList" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ToDoList" Member="ToDoLists">
+    <Type Name="ToDoList">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Subject" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Goal" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="ProgressGoal_ToDoList" Member="ProgressGoal" ThisKey="Goal" OtherKey="Goal" Type="ProgressGoal" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
